@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-type User struct {
+type user struct {
 	firstName string
 	lastName  string
 	birthdate string
