@@ -11,9 +11,7 @@ func main() {
 	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
 	var appUser *user.User
-	appUser = &user.User{
-		FirstName: firstName,
-	}
+	appUser,err := user.New(firstName, lastName, birthdate)
 
 	if err != nil {
 		fmt.Println(err)
@@ -21,8 +19,8 @@ func main() {
 	}
 
 	appUser.OutputUserDetails()
-	appUser.clearUserName()
-	appUser.outputUserDetails()
+	appUser.ClearUserName()
+	appUser.OutputUserDetails()
 }
 
 func getUserData(promptText string) string {
