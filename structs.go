@@ -11,12 +11,23 @@ func main() {
 	birthdate := getUserData("Please enter your birthdate (MM/DD/YYYY): ")
 
 	var appUser *user.User
-	appUser,err := user.New(firstName, lastName, birthdate)
+	appUser, err := user.New(firstName, lastName, birthdate)
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+
+	admin, err := user.NewAdmin("test@example.com", "test123")
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	admin.OutputUserDetails()
+	admin.ClearUserName()
+	admin.OutputUserDetails()
 
 	appUser.OutputUserDetails()
 	appUser.ClearUserName()
