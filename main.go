@@ -7,35 +7,48 @@ import (
 	"strings"
 
 	"example.com/note/note"
+	"example.com/note/todo"
 )
 
 func main() {
 	title, content := getNoteData()
+	todoText := getUserInput("Todo Text :")
 
-	var newNote note.Note
-	newNote, err := note.New(title, content)
+	userNote, err := note.New(title, content)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	newNote.Display()
-	err = newNote.Save()
+	userTodo, err := todo.New(todoText)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	userNote.Display()
+	err = userNote.Save()
 
 	if err != nil {
 		fmt.Println("Saving the note failed.")
 		return
 	}
 	fmt.Println("Saving the note succeeded!")
+
+	userTodo.Display()
+	err = userTodo.Save()
+
+	if err != nil {
+		fmt.Println("Saving the todo failed.")
+		return
+	}
+	fmt.Println("Saving the todo succeeded!")
 }
 
 func getNoteData() (string, string) {
 	title := getUserInput("Note Title :")
 	content := getUserInput("Note Content :")
 
-	fmt.Println("Your note titled", title, "has the following content :")
-	fmt.Println(content)
-	fmt.Println("Saving the note succeeded!")
 	return title, content
 }
 
