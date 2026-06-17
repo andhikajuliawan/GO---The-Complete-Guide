@@ -45,6 +45,13 @@ func main() {
 	}
 
 	outputData(userTodo)
+
+	add := add(4, 6)
+	fmt.Println(add)
+}
+
+func add[T int | string | float64](a, b T) T {
+	return a + b
 }
 
 func printSomething(value interface{}) {
