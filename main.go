@@ -11,7 +11,7 @@ import (
 )
 
 type saver interface {
-	saver() error
+	Save() error
 }
 
 func main() {
@@ -31,22 +31,28 @@ func main() {
 	}
 
 	userNote.Display()
-	err = userNote.Save()
+	err = saveData(userNote)
+	if err != nil {
+		return
+	}
+
+	userTodo.Display()
+	err = saveData(userTodo)
+	if err != nil {
+		return
+	}
+}
+
+func saveData(data saver) error {
+	err := data.Save()
 
 	if err != nil {
 		fmt.Println("Saving the note failed.")
-		return
+		return err
 	}
+
 	fmt.Println("Saving the note succeeded!")
-
-	userTodo.Display()
-	err = userTodo.Save()
-
-	if err != nil {
-		fmt.Println("Saving the todo failed.")
-		return
-	}
-	fmt.Println("Saving the todo succeeded!")
+	return nil
 }
 
 func getNoteData() (string, string) {
