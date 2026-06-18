@@ -13,9 +13,14 @@ func main() {
 	fmt.Println(prices[0:1])
 	prices[1] = 3.9
 
-	prices = append(prices, 4.9)
+	prices = append(prices, 4.9, 5.9, 6.9, 7.9, 8.9, 9.9)
 	fmt.Println(prices)
 	prices = prices[1:]
+	fmt.Println(prices)
+
+	discountPrices := []float64{10.99, 11.99, 12.99, 13.99, 14.99}
+	fmt.Println(prices)
+	prices = append(prices, discountPrices...)
 	fmt.Println(prices)
 }
 
