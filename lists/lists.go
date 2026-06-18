@@ -8,7 +8,7 @@ type product struct {
 	price float64
 }
 
-func main() {
+func lists() {
 	prices := []float64{1.9, 2.9}
 	fmt.Println(prices[0:1])
 	prices[1] = 3.9
