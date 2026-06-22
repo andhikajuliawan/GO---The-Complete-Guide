@@ -13,4 +13,14 @@ func main() {
 	userName = append(userName, "william")
 
 	fmt.Println(userName)
+
+	// courseRatings := map[string]float64{}
+	courseRatings := make(map[string]float64, 3)
+
+	courseRatings["Go"] = 7.8
+	courseRatings["JS"] = 4.6
+	courseRatings["Angular"] = 4.7
+
+	fmt.Println(courseRatings)
+
 }
