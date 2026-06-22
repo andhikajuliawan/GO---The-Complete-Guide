@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type floatMap map[string]float64
 
@@ -29,4 +31,14 @@ func main() {
 
 	courseRatings.output()
 	// fmt.Println(courseRatings)
+
+	for index, name := range userName {
+		fmt.Println("index:", index)
+		fmt.Println("name:", name)
+	}
+
+	for index, course := range courseRatings {
+		fmt.Println("key:", index)
+		fmt.Println("value:", course)
+	}
 }
