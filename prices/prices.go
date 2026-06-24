@@ -1,13 +1,24 @@
 package prices
 
-type taxIncludedPriceJob struct {
+import "fmt"
+
+type TaxIncludedPriceJob struct {
 	TaxRate           float64
 	InputPrices       []float64
-	taxIncludedPrices map[float64][]float64
+	TaxIncludedPrices map[string]float64
 }
 
-func NewTaxIncludedPriceJob(taxRate float64) *taxIncludedPriceJob {
-	return &taxIncludedPriceJob{
+func (t TaxIncludedPriceJob) Process() {
+	result := make(map[string]float64)
+	for _, price := range t.InputPrices {
+		result[fmt.Sprintf("%.2f", price)] = price * (1 + t.TaxRate)
+	}
+
+	fmt.Println(result)
+}
+
+func NewTaxIncludedPriceJob(taxRate float64) *TaxIncludedPriceJob {
+	return &TaxIncludedPriceJob{
 		InputPrices: []float64{10, 20, 30, 40},
 		TaxRate:     taxRate,
 	}
